@@ -10,7 +10,7 @@ public class BaseTests {
     protected WebDriver driver;
 
     @BeforeMethod
-    public void setupClass() throws InterruptedException {
+    public void driverSetup() throws InterruptedException {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();

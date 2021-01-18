@@ -22,12 +22,11 @@ public class MyTests extends BaseTests {
         WebElement emailField = driver.findElement(By.xpath(".//input[@name='l_']"));
         emailField.sendKeys("oleg123@mailinator.com");
         WebElement passwordField = driver.findElement(By.xpath(".//input[@name='pw_']"));
-        passwordField.clear();
         passwordField.sendKeys("1234qwer", Keys.ENTER);
         Thread.sleep(2000);
 
         Assertions.assertThat(driver.findElement(By.id("mui_user_login_row")).isDisplayed())
-                .as("User icon is shown on the right corner")
+                .as("User icon should be shown on the right corner")
                 .isTrue();
     }
 
@@ -42,12 +41,11 @@ public class MyTests extends BaseTests {
         WebElement emailField = driver.findElement(By.xpath(".//input[@name='l_']"));
         emailField.sendKeys("oleg123@mailinator.com");
         WebElement passwordField = driver.findElement(By.xpath(".//input[@name='pw_']"));
-        passwordField.clear();
         passwordField.sendKeys("12345qwer", Keys.ENTER);
         Thread.sleep(2000);
 
         Assertions.assertThat(driver.findElement(By.xpath(".//div[contains(@class, 'ek-form-text')]")).getText())
-                .as("Message about wrong password is shown")
+                .as("Wrong password message should be shown")
                 .isEqualTo("Пароль указан неверно!");
     }
 
@@ -68,13 +66,14 @@ public class MyTests extends BaseTests {
         driver.findElement(By.className("info-nick")).click();
         driver.findElement(By.className("user-menu__edit")).click();
         WebElement dedcriptionField = driver.findElement(By.name("p_[SelfDescription]"));
+        dedcriptionField.clear();
         dedcriptionField.sendKeys("Hello");
         Thread.sleep(1000);
         driver.findElement(By.xpath(".//*[@type='submit']")).click();
         Thread.sleep(1000);
 
         Assertions.assertThat(driver.findElement(By.xpath(".//div[@class='page-title']")).isDisplayed())
-                .as("Success message is displayed")
+                .as("Success message should be displayed")
                 .isTrue();
     }
 
@@ -87,7 +86,7 @@ public class MyTests extends BaseTests {
         Thread.sleep(2000);
 
         Assertions.assertThat(driver.findElement(By.id("search_title")).getText())
-                .as("No Results Found' is not shown")
+                .as("No Results Found' should not be shown")
                 .contains("По запросу Apple iPhone 12 найдено");
     }
 
@@ -101,7 +100,7 @@ public class MyTests extends BaseTests {
         Thread.sleep(2000);
 
         Assertions.assertThat(driver.findElement(By.linkText("Мобильные телефоны")).isDisplayed())
-                .as("Page with phones is displayed")
+                .as("Page with phones should be displayed")
                 .isTrue();
     }
 
@@ -114,7 +113,7 @@ public class MyTests extends BaseTests {
         Thread.sleep(2000);
 
         Assertions.assertThat(driver.findElement(By.xpath(".//*[@class='t2 no-mobile']")).getText())
-                .as("Page with iPhone is shown")
+                .as("Page with iPhone should be shown")
                 .contains("Apple iPhone 11 Pro 64");
     }
 
@@ -129,7 +128,7 @@ public class MyTests extends BaseTests {
         Thread.sleep(1000);
 
         Assertions.assertThat(driver.findElement(By.xpath(".//div[contains(@class, 'h1 ib')]")).isDisplayed())
-                .as("Section portable speakers was opened from last slide")
+                .as("Section portable speakers should be opened from last slide")
                 .isTrue();
     }
 
@@ -145,7 +144,7 @@ public class MyTests extends BaseTests {
         Thread.sleep(1000);
 
         Assertions.assertThat(driver.findElement(By.xpath(".//*[@src='https://mzimg.com/120/f1/g6vjc7bn1f1.jpg']")).isDisplayed())
-                .as("Second photo is displayed")
+                .as("Second photo should be displayed")
                 .isTrue();
     }
 
@@ -163,7 +162,7 @@ public class MyTests extends BaseTests {
         Thread.sleep(2000);
 
         Assertions.assertThat(driver.findElement(By.xpath(".//a[@class='sort-arr-down']")).isDisplayed())
-                .as("Product is sorted from lowest price")
+                .as("Product should be sorted from lowest price")
                 .isTrue();
     }
 
@@ -181,7 +180,7 @@ public class MyTests extends BaseTests {
         Thread.sleep(1000);
 
         Assertions.assertThat(driver.findElements(By.xpath(".//a[contains(@id, 'visited_item')]")))
-                .as("'No Results Found' is not shown")
+                .as("'No Results Found' should not be shown")
                 .hasSize(2);
     }
 }
