@@ -15,7 +15,7 @@ public class BaseTests {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://ek.ua/");
-        Thread.sleep(3000);
+        Thread.sleep(1000);
     }
 
     @AfterMethod
