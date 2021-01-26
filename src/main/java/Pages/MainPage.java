@@ -59,34 +59,27 @@ public class MainPage {
     }
 
     public boolean isUserIconDisplayed() {
-
         return driver.findElement(userIcon).isDisplayed();
     }
 
     public String getErrorMessageText() {
-
         return driver.findElement(ErrorMessageText).getText();
     }
 
-    public void hoverOverOnHeaderGadgets() throws InterruptedException {
+    public void clickGadgetsPhones() throws InterruptedException {
         Actions action = new Actions(driver);
         WebElement gadgets = driver.findElement(headerGadgets);
         action.moveToElement(gadgets).build().perform();
         Thread.sleep(1000);
-    }
-
-    public void clickGadgetsPhones() throws InterruptedException {
         driver.findElement(headerGadgetsPhones).click();
         Thread.sleep(2000);
     }
 
     public boolean isSectionWithProductDisplayed() {
-
         return driver.findElement(sectionWithProduct).isDisplayed();
     }
 
     public void clickRightArrowSliderMainPage() {
-
         driver.findElement(rightArrowSliderMainPage).click();
     }
 

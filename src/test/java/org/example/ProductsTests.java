@@ -6,11 +6,12 @@ import org.example.baseTests.BaseTests;
 import org.testng.annotations.Test;
 
 public class ProductsTests extends BaseTests {
+    private static final String productToBeSearched = "Apple iPhone 11 Pro 64";
 
     @Test
     public void verifySliderInPhotos() throws InterruptedException {
         ProductPage productPage = new ProductPage(driver);
-        productPage.enterProductInSearch("Apple iPhone 11 Pro 64");
+        productPage.enterProductInSearch(productToBeSearched);
         productPage.clickFirstProductFromSearch();
         productPage.openProductPhotos();
         productPage.clickArrowRight();
@@ -23,7 +24,7 @@ public class ProductsTests extends BaseTests {
     @Test
     public void sortByPrice() throws InterruptedException {
         ProductPage productPage = new ProductPage(driver);
-        productPage.enterProductInSearch("Apple iPhone 11 Pro 64");
+        productPage.enterProductInSearch(productToBeSearched);
         productPage.clickFirstProductFromSearch();
         productPage.openListOfSellers();
         productPage.clickSortByPrice();

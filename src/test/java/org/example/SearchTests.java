@@ -38,7 +38,6 @@ public class SearchTests extends BaseTests {
         productPage.clickFirstProductFromSearch();
         productPage.clickViewedProducts();
 
-
         Assertions.assertThat(productPage.getVisitedItemsCount())
                 .as("'No Results Found' should not be shown")
                 .isEqualTo(2);

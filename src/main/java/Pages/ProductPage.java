@@ -11,16 +11,15 @@ public class ProductPage {
     private By firstProductFromSearch = By.xpath(".//tr[contains(@id,'-1')]");
     private By productPhotos = By.xpath(".//sub[contains(@id,'photo')]");
     private By arrowRight = By.xpath(".//a[@class='pp_next']");
-    private By secondPhoto = By.xpath(".//img[contains(@src,'120/f1/g6vjc7bn1f1.jpg')]");
+    private By secondPhoto = By.xpath(".//img[contains(@src,'g6vjc7bn1f1')]/ancestor::li[contains(@class,'selected')]");
     private By listOfSellers = By.xpath(".//a[contains(@link,'/prices')]");
     private By sortByPrice = By.xpath(".//a[contains(@href,'order')]");
     private By arrowDown = By.xpath(".//a[contains(@class,'down')]");
     private By findButton = By.xpath(".//button[@name='search_but_']");
     private By searchResults = By.xpath(".//h1[@id='search_title']");
     private By productTitle = By.xpath(".//h1[@class='t2 no-mobile']");
-    private By viewedProducts = By.xpath(".//span[@id='name_bm_visited']");
+    private By viewedProducts = By.xpath(".//span[contains(@id,'visited')]/parent::li[contains(@id,'bar')]");
     private By visitedItem = By.xpath(".//a[contains(@id,'visited_item')]");
-
 
     public ProductPage(WebDriver driver) {
         this.driver = driver;
@@ -53,7 +52,6 @@ public class ProductPage {
     public void openListOfSellers() throws InterruptedException {
         driver.findElement(listOfSellers).click();
         Thread.sleep(1000);
-
     }
 
     public void clickSortByPrice() throws InterruptedException {

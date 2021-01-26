@@ -10,7 +10,6 @@ public class NavigationTests extends BaseTests {
     @Test
     public void openGadgetsMobileSection() throws InterruptedException {
         MainPage mainPage = new MainPage(driver);
-        mainPage.hoverOverOnHeaderGadgets();
         mainPage.clickGadgetsPhones();
 
         Assertions.assertThat(mainPage.isSectionWithProductDisplayed())

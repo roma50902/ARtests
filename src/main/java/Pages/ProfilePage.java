@@ -36,7 +36,6 @@ public class ProfilePage {
     }
 
     public boolean isSuccessMessageDisplayed() {
-
         return driver.findElement(successMessage).isDisplayed();
     }
 }
