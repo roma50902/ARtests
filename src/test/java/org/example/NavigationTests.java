@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class NavigationTests extends BaseTests {
 
     @Test
-    public void openGadgetsMobileSection() throws InterruptedException {
+    public void openGadgetsMobileSection() {
         MainPage mainPage = new MainPage(driver);
         mainPage.clickGadgetsPhones();
 
@@ -18,12 +18,11 @@ public class NavigationTests extends BaseTests {
     }
 
     @Test
-    public void verifySlider() throws InterruptedException {
+    public void verifySlider() {
         MainPage mainPage = new MainPage(driver);
         for (int i = 0; i < 3; i++) {
             mainPage.clickRightArrowSliderMainPage();
         }
-        Thread.sleep(500);
         mainPage.clickPortableSpeakersSection();
 
         Assertions.assertThat(mainPage.isSectionWithProductDisplayed())

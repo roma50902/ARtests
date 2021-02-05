@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class SearchTests extends BaseTests {
 
     @Test
-    public void VerifySearch() throws InterruptedException {
+    public void VerifySearch() {
         ProductPage productPage = new ProductPage(driver);
         productPage.enterProductInSearch("Apple iPhone 12");
         productPage.clickFindButton();
@@ -19,7 +19,7 @@ public class SearchTests extends BaseTests {
     }
 
     @Test
-    public void openProductFromSearch() throws InterruptedException {
+    public void openProductFromSearch() {
         ProductPage productPage = new ProductPage(driver);
         productPage.enterProductInSearch("Apple iPhone 11 Pro 64");
         productPage.clickFirstProductFromSearch();
@@ -30,7 +30,7 @@ public class SearchTests extends BaseTests {
     }
 
     @Test
-    public void verifyViewedProductsInHistory() throws InterruptedException {
+    public void verifyViewedProductsInHistory() {
         ProductPage productPage = new ProductPage(driver);
         productPage.enterProductInSearch("Apple iPhone 11 Pro 64");
         productPage.clickFirstProductFromSearch();

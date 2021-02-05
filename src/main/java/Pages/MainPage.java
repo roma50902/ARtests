@@ -1,89 +1,98 @@
 package Pages;
 
-import org.openqa.selenium.By;
+import Utils.WaitUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class MainPage {
     private WebDriver driver;
-    private By loginButton = By.xpath(".//span[@class='wu_entr']");
-    private By loginViaEmail = By.xpath(".//div[contains(@class,'-ek')]");
-    private By emailField = By.xpath(".//input[@name='l_']");
-    private By passwordField = By.xpath(".//input[@name='pw_']");
-    private By signinButton = By.xpath(".//div[contains(@class,'signin')]//following-sibling::button[contains(@class,'ek')]");
-    private By userIcon = By.xpath(".//div[contains(@id,'mui')]");
-    private By ErrorMessageText = By.xpath(".//div[contains(@class, 'form-text')]");
-    private By headerGadgets = By.xpath(".//a[contains(@class,'first')]");
-    private By headerGadgetsPhones = By.xpath(".//a[contains(@class,'icon122')]");
-    private By sectionWithProduct = By.xpath(".//div[@class='h1 ib']");
-    private By rightArrowSliderMainPage = By.xpath(".//div[contains(@class,'right')]");
-    private By portableSpeakers = By.xpath(".//div[contains(@data-src,'41.')]");
+    private WaitUtils waitUtils;
+    @FindBy(xpath = ".//span[@class='wu_entr']")
+    private WebElement loginButton;
+    @FindBy(xpath = ".//div[contains(@class,'-ek')]")
+    private WebElement loginViaEmail;
+    @FindBy(xpath = ".//input[@name='l_']")
+    private WebElement emailField;
+    @FindBy(xpath = ".//input[@name='pw_']")
+    private WebElement passwordField;
+    @FindBy(xpath = ".//div[contains(@class,'signin')]//following-sibling::button[contains(@class,'ek')]")
+    private WebElement signinButton;
+    @FindBy(xpath = ".//div[contains(@id,'mui')]")
+    private WebElement userIcon;
+    @FindBy(xpath = ".//div[contains(@class, 'form-text')]")
+    private WebElement ErrorMessageText;
+    @FindBy(xpath = ".//a[contains(@class,'first')]")
+    private WebElement headerGadgets;
+    @FindBy(xpath = ".//a[contains(@class,'icon122')]")
+    private WebElement headerGadgetsPhones;
+    @FindBy(xpath = ".//div[@class='h1 ib']")
+    private WebElement sectionWithProduct;
+    @FindBy(xpath = ".//div[contains(@class,'right')]")
+    private WebElement rightArrowSliderMainPage;
+    @FindBy(xpath = ".//div[contains(@data-src,'41.')]")
+    private WebElement portableSpeakers;
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
+        waitUtils = new WaitUtils(driver);
+        PageFactory.initElements(driver, this);
     }
 
-    public void clickLoginButton() throws InterruptedException {
-        driver.findElement(loginButton).click();
-        Thread.sleep(1000);
+    public void clickLoginButton() {
+        waitUtils.clickWhenReadyAfterShortWait(loginButton);
     }
 
-    public void clickLoginViaEmail() throws InterruptedException {
-        driver.findElement(loginViaEmail).click();
-        Thread.sleep(1000);
+    public void clickLoginViaEmail() {
+        waitUtils.clickWhenReadyAfterShortWait(loginViaEmail);
     }
 
-    public void inputEmailIntoField(String emailAdress) {
-        WebElement email = driver.findElement(emailField);
-        email.sendKeys(emailAdress);
+    public void inputEmailIntoField(String emailAddress) {
+        waitUtils.waitForElementVisibilityAfterShortWait(emailField);
+        emailField.sendKeys(emailAddress);
     }
 
     public void inputPasswordIntoField(String password) {
-        WebElement pass = driver.findElement(passwordField);
-        pass.sendKeys(password);
+        waitUtils.waitForElementVisibilityAfterMiddleWait(passwordField);
+        passwordField.sendKeys(password);
     }
 
-    public void clickSigninButton() throws InterruptedException {
-        WebElement signIn = driver.findElement(signinButton);
-        if (signIn.isEnabled()) {
-            signIn.click();
-        }
-        Thread.sleep(2000);
+    public void clickSigninButton() {
+        waitUtils.clickWhenReadyAfterMiddleWait(signinButton);
     }
 
-    public void loginWithCreds(String emailAdress, String password) throws InterruptedException {
-        inputEmailIntoField(emailAdress);
+    public void loginWithCreds(String emailAddress, String password) {
+        inputEmailIntoField(emailAddress);
         inputPasswordIntoField(password);
         clickSigninButton();
     }
 
     public boolean isUserIconDisplayed() {
-        return driver.findElement(userIcon).isDisplayed();
+        return waitUtils.waitForElementVisibilityAfterLongWait(userIcon).isDisplayed();
     }
 
     public String getErrorMessageText() {
-        return driver.findElement(ErrorMessageText).getText();
+        return waitUtils.getElementTextAfterShortWait(ErrorMessageText);
     }
 
-    public void clickGadgetsPhones() throws InterruptedException {
+    public void clickGadgetsPhones() {
         Actions action = new Actions(driver);
-        WebElement gadgets = driver.findElement(headerGadgets);
+        WebElement gadgets = waitUtils.waitForElementVisibilityAfterShortWait(headerGadgets);
         action.moveToElement(gadgets).build().perform();
-        Thread.sleep(1000);
-        driver.findElement(headerGadgetsPhones).click();
-        Thread.sleep(2000);
+        waitUtils.waitForElementVisibilityAfterShortWait(headerGadgetsPhones).click();
     }
 
     public boolean isSectionWithProductDisplayed() {
-        return driver.findElement(sectionWithProduct).isDisplayed();
+        return waitUtils.waitForElementVisibilityAfterLongWait(sectionWithProduct).isDisplayed();
     }
 
     public void clickRightArrowSliderMainPage() {
-        driver.findElement(rightArrowSliderMainPage).click();
+        waitUtils.clickWhenReadyAfterLongWait(rightArrowSliderMainPage);
     }
 
     public void clickPortableSpeakersSection() {
-        driver.findElement(portableSpeakers).click();
+        waitUtils.clickWhenReadyAfterShortWait(portableSpeakers);
     }
 }

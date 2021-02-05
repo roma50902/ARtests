@@ -9,7 +9,7 @@ public class ProductsTests extends BaseTests {
     private static final String productToBeSearched = "Apple iPhone 11 Pro 64";
 
     @Test
-    public void verifySliderInPhotos() throws InterruptedException {
+    public void verifySliderInPhotos() {
         ProductPage productPage = new ProductPage(driver);
         productPage.enterProductInSearch(productToBeSearched);
         productPage.clickFirstProductFromSearch();
@@ -22,7 +22,7 @@ public class ProductsTests extends BaseTests {
     }
 
     @Test
-    public void sortByPrice() throws InterruptedException {
+    public void sortByPrice() {
         ProductPage productPage = new ProductPage(driver);
         productPage.enterProductInSearch(productToBeSearched);
         productPage.clickFirstProductFromSearch();

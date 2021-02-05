@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class LoginTests extends BaseTests {
 
     @Test
-    public void loginTest() throws InterruptedException {
+    public void loginTest() {
         MainPage mainPage = new MainPage(driver);
         mainPage.clickLoginButton();
         mainPage.clickLoginViaEmail();
@@ -20,7 +20,7 @@ public class LoginTests extends BaseTests {
     }
 
     @Test
-    public void loginWithIncorrectPassword() throws InterruptedException {
+    public void loginWithIncorrectPassword() {
         MainPage mainPage = new MainPage(driver);
         mainPage.clickLoginButton();
         mainPage.clickLoginViaEmail();

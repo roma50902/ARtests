@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class ProfileTests extends BaseTests {
 
     @Test
-    public void addTextInProfileInfo() throws InterruptedException {
+    public void addTextInProfileInfo() {
         MainPage mainPage = new MainPage(driver);
         mainPage.clickLoginButton();
         mainPage.clickLoginViaEmail();

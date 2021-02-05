@@ -1,88 +1,102 @@
 package Pages;
 
-import org.openqa.selenium.By;
+import Utils.WaitUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 public class ProductPage {
     private WebDriver driver;
-    private By searchField = By.xpath(".//input[@id='ek-search']");
-    private By firstProductFromSearch = By.xpath(".//tr[contains(@id,'-1')]");
-    private By productPhotos = By.xpath(".//sub[contains(@id,'photo')]");
-    private By arrowRight = By.xpath(".//a[@class='pp_next']");
-    private By secondPhoto = By.xpath(".//img[contains(@src,'g6vjc7bn1f1')]/ancestor::li[contains(@class,'selected')]");
-    private By listOfSellers = By.xpath(".//a[contains(@link,'/prices')]");
-    private By sortByPrice = By.xpath(".//a[contains(@href,'order')]");
-    private By arrowDown = By.xpath(".//a[contains(@class,'down')]");
-    private By findButton = By.xpath(".//button[@name='search_but_']");
-    private By searchResults = By.xpath(".//h1[@id='search_title']");
-    private By productTitle = By.xpath(".//h1[@class='t2 no-mobile']");
-    private By viewedProducts = By.xpath(".//span[contains(@id,'visited')]/parent::li[contains(@id,'bar')]");
-    private By visitedItem = By.xpath(".//a[contains(@id,'visited_item')]");
+    private WaitUtils waitUtils;
+    @FindBy(xpath = ".//input[@id='ek-search']")
+    private WebElement searchField;
+    @FindBy(xpath = ".//tr[contains(@id,'-1')]")
+    private WebElement firstProductFromSearch;
+    @FindBy(xpath = ".//sub[contains(@id,'photo')]")
+    private WebElement productPhotos;
+    @FindBy(xpath = ".//a[@class='pp_next']")
+    private WebElement arrowRight;
+    @FindBy(xpath = ".//img[contains(@src,'g6vjc7bn1f1')]/ancestor::li[contains(@class,'selected')]")
+    private WebElement secondPhoto;
+    @FindBy(xpath = ".//a[contains(@link,'/prices')]")
+    private WebElement listOfSellers;
+    @FindBy(xpath = ".//a[contains(@href,'order')]")
+    private WebElement sortByPrice;
+    @FindBy(xpath = ".//a[contains(@class,'down')]")
+    private WebElement arrowDown;
+    @FindBy(xpath = ".//button[@name='search_but_']")
+    private WebElement findButton;
+    @FindBy(xpath = ".//h1[@id='search_title']")
+    private WebElement searchResults;
+    @FindBy(xpath = ".//h1[@class='t2 no-mobile']")
+    private WebElement productTitle;
+    @FindBy(xpath = ".//span[contains(@id,'visited')]/parent::li[contains(@id,'bar')]")
+    private WebElement viewedProducts;
+    @FindBy(xpath = ".//a[contains(@id,'visited_item')]")
+    private List<WebElement> visitedItem;
 
     public ProductPage(WebDriver driver) {
         this.driver = driver;
+        waitUtils = new WaitUtils(driver);
+        PageFactory.initElements(driver, this);
     }
 
-    public void enterProductInSearch(String productName) throws InterruptedException {
-        WebElement search = driver.findElement(searchField);
+    public void enterProductInSearch(String productName) {
+        WebElement search = waitUtils.waitForElementVisibilityAfterShortWait(searchField);
         search.sendKeys(productName);
-        Thread.sleep(1000);
     }
 
     public void clickFirstProductFromSearch() {
-        driver.findElement(firstProductFromSearch).click();
+        waitUtils.clickWhenReadyAfterMiddleWait(firstProductFromSearch);
     }
 
-    public void openProductPhotos() throws InterruptedException {
-        driver.findElement(productPhotos).click();
-        Thread.sleep(1000);
+    public void openProductPhotos() {
+        waitUtils.clickWhenReadyAfterMiddleWait(productPhotos);
     }
 
-    public void clickArrowRight() throws InterruptedException {
-        driver.findElement(arrowRight).click();
-        Thread.sleep(500);
+    public void clickArrowRight() {
+        waitUtils.clickWhenReadyAfterShortWait(arrowRight);
     }
 
     public boolean isSecondPhotoDisplayed() {
-        return driver.findElement(secondPhoto).isDisplayed();
+        return waitUtils.waitForElementVisibilityAfterLongWait(secondPhoto).isDisplayed();
     }
 
-    public void openListOfSellers() throws InterruptedException {
-        driver.findElement(listOfSellers).click();
-        Thread.sleep(1000);
+    public void openListOfSellers() {
+        waitUtils.clickWhenReadyAfterShortWait(listOfSellers);
     }
 
-    public void clickSortByPrice() throws InterruptedException {
-        WebElement sorting = driver.findElement(sortByPrice);
+    public void clickSortByPrice() {
+        WebElement sorting = waitUtils.waitForElementVisibilityAfterShortWait(sortByPrice);
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", sorting);
-        Thread.sleep(2000);
     }
 
     public boolean isArrowDownDisplayed() {
-        return driver.findElement(arrowDown).isDisplayed();
+        return waitUtils.waitForElementVisibilityAfterShortWait(arrowDown).isDisplayed();
     }
 
-    public void clickFindButton() throws InterruptedException {
-        driver.findElement(findButton).click();
-        Thread.sleep(2000);
+    public void clickFindButton() {
+        waitUtils.clickWhenReadyAfterShortWait(findButton);
     }
 
     public String getSearchResults() {
-        return driver.findElement(searchResults).getText();
+        return waitUtils.getElementTextAfterShortWait(searchResults);
     }
 
     public String getProductTitle() {
-        return driver.findElement(productTitle).getText();
+        return waitUtils.getElementTextAfterShortWait(productTitle);
     }
 
     public void clickViewedProducts() {
-        driver.findElement(viewedProducts).click();
+        waitUtils.clickWhenReadyAfterShortWait(viewedProducts);
     }
 
     public int getVisitedItemsCount() {
-        return driver.findElements(visitedItem).size();
+        return waitUtils.waitForVisibilityOfAllElementsAfterShortWait(visitedItem).size();
     }
 }
