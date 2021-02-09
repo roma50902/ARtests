@@ -9,15 +9,19 @@ import org.openqa.selenium.support.PageFactory;
 public class ProfilePage {
     private WebDriver driver;
     private WaitUtils waitUtils;
-    @FindBy (xpath = ".//a[@class='info-nick']")
+    @FindBy(xpath = ".//a[@class='info-nick']")
     private WebElement userIcon;
-    @FindBy (xpath = ".//a[contains(@class,'edit')]")
+
+    @FindBy(xpath = ".//a[contains(@class,'edit')]")
     private WebElement editProfile;
-    @FindBy (xpath = ".//textarea[@name='p_[SelfDescription]']")
+
+    @FindBy(xpath = ".//textarea[@name='p_[SelfDescription]']")
     private WebElement descriptionField;
-    @FindBy (xpath = ".//button[@type='submit']")
+
+    @FindBy(xpath = ".//button[@type='submit']")
     private WebElement submitButton;
-    @FindBy (xpath = ".//div[@class='page-title']")
+
+    @FindBy(xpath = ".//div[@class='page-title']")
     private WebElement successMessage;
 
     public ProfilePage(WebDriver driver) {
