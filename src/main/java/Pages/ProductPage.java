@@ -12,31 +12,31 @@ import java.util.List;
 public class ProductPage {
     private WebDriver driver;
     private WaitUtils waitUtils;
-    @FindBy(xpath = ".//input[@id='ek-search']")
+    @FindBy (xpath = ".//input[@id='ek-search']")
     private WebElement searchField;
-    @FindBy(xpath = ".//tr[contains(@id,'-1')]")
+    @FindBy (xpath = ".//tr[contains(@id,'-1')]")
     private WebElement firstProductFromSearch;
-    @FindBy(xpath = ".//sub[contains(@id,'photo')]")
+    @FindBy (xpath = ".//sub[contains(@id,'photo')]")
     private WebElement productPhotos;
-    @FindBy(xpath = ".//a[@class='pp_next']")
+    @FindBy (xpath = ".//a[@class='pp_next']")
     private WebElement arrowRight;
-    @FindBy(xpath = ".//img[contains(@src,'g6vjc7bn1f1')]/ancestor::li[contains(@class,'selected')]")
+    @FindBy (xpath = ".//img[contains(@src,'g6vjc7bn1f1')]/ancestor::li[contains(@class,'selected')]")
     private WebElement secondPhoto;
-    @FindBy(xpath = ".//a[contains(@link,'/prices')]")
+    @FindBy (xpath = ".//a[contains(@link,'/prices')]")
     private WebElement listOfSellers;
-    @FindBy(xpath = ".//a[contains(@href,'order')]")
+    @FindBy (xpath = ".//a[contains(@href,'order')]")
     private WebElement sortByPrice;
-    @FindBy(xpath = ".//a[contains(@class,'down')]")
+    @FindBy (xpath = ".//a[contains(@class,'down')]")
     private WebElement arrowDown;
-    @FindBy(xpath = ".//button[@name='search_but_']")
+    @FindBy (xpath = ".//button[@name='search_but_']")
     private WebElement findButton;
-    @FindBy(xpath = ".//h1[@id='search_title']")
+    @FindBy (xpath = ".//h1[@id='search_title']")
     private WebElement searchResults;
-    @FindBy(xpath = ".//h1[@class='t2 no-mobile']")
+    @FindBy (xpath = ".//h1[@class='t2 no-mobile']")
     private WebElement productTitle;
-    @FindBy(xpath = ".//span[contains(@id,'visited')]/parent::li[contains(@id,'bar')]")
+    @FindBy (xpath = ".//span[contains(@id,'visited')]/parent::li[contains(@id,'bar')]")
     private WebElement viewedProducts;
-    @FindBy(xpath = ".//a[contains(@id,'visited_item')]")
+    @FindBy (xpath = ".//a[contains(@id,'visited_item')]")
     private List<WebElement> visitedItem;
 
     public ProductPage(WebDriver driver) {

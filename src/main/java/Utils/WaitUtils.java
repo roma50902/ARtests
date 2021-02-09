@@ -13,13 +13,10 @@ import java.util.List;
 
 public class WaitUtils {
     private WebDriver driver;
-
     public static final int SHORT_WAIT = 5;
     private WebDriverWait shortWait;
-
     public static final int MIDDLE_WAIT = 10;
     private WebDriverWait midWait;
-
     public static final int LONG_WAIT = 15;
     private WebDriverWait longWait;
 

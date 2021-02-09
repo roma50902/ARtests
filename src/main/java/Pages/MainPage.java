@@ -10,29 +10,29 @@ import org.openqa.selenium.support.PageFactory;
 public class MainPage {
     private WebDriver driver;
     private WaitUtils waitUtils;
-    @FindBy(xpath = ".//span[@class='wu_entr']")
+    @FindBy (xpath = ".//span[@class='wu_entr']")
     private WebElement loginButton;
-    @FindBy(xpath = ".//div[contains(@class,'-ek')]")
+    @FindBy (xpath = ".//div[contains(@class,'-ek')]")
     private WebElement loginViaEmail;
-    @FindBy(xpath = ".//input[@name='l_']")
+    @FindBy (xpath = ".//input[@name='l_']")
     private WebElement emailField;
-    @FindBy(xpath = ".//input[@name='pw_']")
+    @FindBy (xpath = ".//input[@name='pw_']")
     private WebElement passwordField;
-    @FindBy(xpath = ".//div[contains(@class,'signin')]//following-sibling::button[contains(@class,'ek')]")
+    @FindBy (xpath = ".//div[contains(@class,'signin')]//following-sibling::button[contains(@class,'ek')]")
     private WebElement signinButton;
-    @FindBy(xpath = ".//div[contains(@id,'mui')]")
+    @FindBy (xpath = ".//div[contains(@id,'mui')]")
     private WebElement userIcon;
-    @FindBy(xpath = ".//div[contains(@class, 'form-text')]")
+    @FindBy (xpath = ".//div[contains(@class, 'form-text')]")
     private WebElement ErrorMessageText;
-    @FindBy(xpath = ".//a[contains(@class,'first')]")
+    @FindBy (xpath = ".//a[contains(@class,'first')]")
     private WebElement headerGadgets;
-    @FindBy(xpath = ".//a[contains(@class,'icon122')]")
+    @FindBy (xpath = ".//a[contains(@class,'icon122')]")
     private WebElement headerGadgetsPhones;
-    @FindBy(xpath = ".//div[@class='h1 ib']")
+    @FindBy (xpath = ".//div[@class='h1 ib']")
     private WebElement sectionWithProduct;
-    @FindBy(xpath = ".//div[contains(@class,'right')]")
+    @FindBy (xpath = ".//div[contains(@class,'right')]")
     private WebElement rightArrowSliderMainPage;
-    @FindBy(xpath = ".//div[contains(@data-src,'41.')]")
+    @FindBy (xpath = ".//div[contains(@data-src,'41.')]")
     private WebElement portableSpeakers;
 
     public MainPage(WebDriver driver) {
