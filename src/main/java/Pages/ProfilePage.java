@@ -1,14 +1,10 @@
 package Pages;
 
-import Utils.WaitUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class ProfilePage {
-    private WebDriver driver;
-    private WaitUtils waitUtils;
+public class ProfilePage extends BasePage {
     @FindBy(xpath = ".//a[@class='info-nick']")
     private WebElement userIcon;
 
@@ -25,9 +21,14 @@ public class ProfilePage {
     private WebElement successMessage;
 
     public ProfilePage(WebDriver driver) {
-        this.driver = driver;
-        waitUtils = new WaitUtils(driver);
-        PageFactory.initElements(driver, this);
+        super(driver);
+        waitForMainElements();
+    }
+
+    @Override
+    public void waitForMainElements() {
+        waitUtils.waitForElementVisibilityAfterShortWait(userIcon);
+        waitUtils.waitForElementVisibilityAfterShortWait(headerGadgets);
     }
 
     public void clickUserIcon() {
