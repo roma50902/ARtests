@@ -6,7 +6,7 @@ import org.example.baseTests.BaseTests;
 import org.testng.annotations.Test;
 
 public class ProductsTests extends BaseTests {
-    private static final String productToBeSearched = "Apple iPhone 11 Pro 64";
+    private static final String productToBeSearched = "Apple iPhone 12 Pro 128";
 
     @Test
     public void verifySliderInPhotos() {

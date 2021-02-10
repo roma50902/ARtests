@@ -1,20 +1,12 @@
 package Pages;
 
-import Utils.WaitUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-
 import java.util.List;
 
-public class ProductPage {
-    private WebDriver driver;
-    private WaitUtils waitUtils;
-    @FindBy(xpath = ".//input[@id='ek-search']")
-    private WebElement searchField;
-
+public class ProductPage extends BasePage {
     @FindBy(xpath = ".//tr[contains(@id,'-1')]")
     private WebElement firstProductFromSearch;
 
@@ -24,7 +16,7 @@ public class ProductPage {
     @FindBy(xpath = ".//a[@class='pp_next']")
     private WebElement arrowRight;
 
-    @FindBy(xpath = ".//img[contains(@src,'g6vjc7bn1f1')]/ancestor::li[contains(@class,'selected')]")
+    @FindBy(xpath = ".//img[contains(@src,'gjq64rmxpy1')]/ancestor::li[contains(@class,'selected')]")
     private WebElement secondPhoto;
 
     @FindBy(xpath = ".//a[contains(@link,'/prices')]")
@@ -52,9 +44,15 @@ public class ProductPage {
     private List<WebElement> visitedItem;
 
     public ProductPage(WebDriver driver) {
-        this.driver = driver;
-        waitUtils = new WaitUtils(driver);
-        PageFactory.initElements(driver, this);
+        super(driver);
+        waitForMainElements();
+    }
+
+    @Override
+    public void waitForMainElements() {
+        waitUtils.waitForElementVisibilityAfterShortWait(searchField);
+        waitUtils.waitForElementVisibilityAfterShortWait(findButton);
+        waitUtils.waitForElementVisibilityAfterShortWait(searchField);
     }
 
     public void enterProductInSearch(String productName) {

@@ -1,15 +1,11 @@
 package Pages;
 
-import Utils.WaitUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class MainPage {
-    private WebDriver driver;
-    private WaitUtils waitUtils;
+public class MainPage extends BasePage {
     @FindBy(xpath = ".//span[@class='wu_entr']")
     private WebElement loginButton;
 
@@ -31,12 +27,6 @@ public class MainPage {
     @FindBy(xpath = ".//div[contains(@class, 'form-text')]")
     private WebElement ErrorMessageText;
 
-    @FindBy(xpath = ".//a[contains(@class,'first')]")
-    private WebElement headerGadgets;
-
-    @FindBy(xpath = ".//a[contains(@class,'icon122')]")
-    private WebElement headerGadgetsPhones;
-
     @FindBy(xpath = ".//div[@class='h1 ib']")
     private WebElement sectionWithProduct;
 
@@ -47,9 +37,15 @@ public class MainPage {
     private WebElement portableSpeakers;
 
     public MainPage(WebDriver driver) {
-        this.driver = driver;
-        waitUtils = new WaitUtils(driver);
-        PageFactory.initElements(driver, this);
+        super(driver);
+        waitForMainElements();
+    }
+
+    @Override
+    public void waitForMainElements() {
+        waitUtils.waitForElementVisibilityAfterShortWait(headerGadgets);
+        waitUtils.waitForElementVisibilityAfterShortWait(rightArrowSliderMainPage);
+        waitUtils.waitForElementVisibilityAfterShortWait(searchField);
     }
 
     public void clickLoginButton() {
